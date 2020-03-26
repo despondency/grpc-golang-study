@@ -10,7 +10,7 @@ import (
 
 type server struct{}
 
-func (s server) ComputeAverage(srv calculator.ComputeAverageService_ComputeAverageServer) error {
+func (s *server) ComputeAverage(srv calculator.ComputeAverageService_ComputeAverageServer) error {
 	var sum float64 = 0
 	var sz float64 = 0
 	for {

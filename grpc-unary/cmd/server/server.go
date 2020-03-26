@@ -10,7 +10,7 @@ import (
 
 type server struct{}
 
-func (s server) Sum(ctx context.Context, req *calculator.SumRequest) (*calculator.SumResponse, error) {
+func (s *server) Sum(ctx context.Context, req *calculator.SumRequest) (*calculator.SumResponse, error) {
 	firstArg := req.GetFirstArgument()
 	secondArg := req.GetSecondArgument()
 	response := &calculator.SumResponse{

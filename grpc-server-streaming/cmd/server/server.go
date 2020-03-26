@@ -9,7 +9,7 @@ import (
 
 type server struct{}
 
-func (s server) DecomposePrime(req *calculator.PrimeNumberDecompositionRequest, srv calculator.PrimeNumberDecompositionService_DecomposePrimeServer) error {
+func (s *server) DecomposePrime(req *calculator.PrimeNumberDecompositionRequest, srv calculator.PrimeNumberDecompositionService_DecomposePrimeServer) error {
 	number := req.Number
 	var i int64 = 2
 	for number > 1 {
