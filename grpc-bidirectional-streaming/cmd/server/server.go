@@ -17,21 +17,21 @@ func (s *server) FindMaximum(srv calculator.FindMaximumService_FindMaximumServer
 		req, err := srv.Recv()
 		if err != nil {
 			if err == io.EOF {
-				log.Printf("EOF on client %v", err)
+				return nil
 			} else {
-				log.Fatalf("Error receiving %v", err)
+				return err
 			}
 		}
 		currNum := req.GetNumber()
+		log.Printf("Received number %v", currNum)
 		if currNum > mx {
 			mx = currNum
 		}
 		err = srv.Send(&calculator.FindMaximumResponse{MaxNumber: mx})
 		if err != nil {
-			log.Fatalf("Error sending max response %v", err)
+			return err
 		}
 	}
-	return nil
 }
 
 func main() {
